@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora do Efeito Doppler</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora do Efeito Doppler</h1>
+        <p class="description">Calcule a frequência percebida por um observador em relação a uma fonte sonora em movimento.</p>
+
+        <form id="doppler-form">
+            <div class="form-group">
+                <label for="v-som">Velocidade do Som ($v$) [m/s]:</label>
+                <input type="number" id="v-som" value="340" step="any" required>
+            </div>
+
+            <div class="form-group">
+                <label for="f-fonte">Frequência da Fonte ($f$) [Hz]:</label>
+                <input type="number" id="f-fonte" value="440" step="any" min="0.1" required>
+            </div>
+
+            <fieldset>
+                <legend>Observador</legend>
+                <div class="form-group">
+                    <label for="v-obs">Velocidade do Observador ($v_o$) [m/s]:</label>
+                    <input type="number" id="v-obs" value="0" step="any" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="dir-obs">Direção do Observador:</label>
+                    <select id="dir-obs">
+                        <option value="0">Parado</option>
+                        <option value="1">Aproximando-se da fonte</option>
+                        <option value="-1">Afastando-se da fonte</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Fonte Sonora</legend>
+                <div class="form-group">
+                    <label for="v-fonte">Velocidade da Fonte ($v_f$) [m/s]:</label>
+                    <input type="number" id="v-fonte" value="20" step="any" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="dir-fonte">Direção da Fonte:</label>
+                    <select id="dir-fonte">
+                        <option value="1">Aproximando-se do observador</option>
+                        <option value="-1">Afastando-se do observador</option>
+                        <option value="0">Parada</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <button type="submit">Calcular Frequência Percebida</button>
+        </form>
+
+        <div id="resultado" class="resultado hidden">
+            <h2>Resultado</h2>
+            <p>Frequência Percebida ($f'$): <strong id="f-percebida">0</strong> Hz</p>
+            <p class="formula-detalhes" id="detalhes-calculo"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
